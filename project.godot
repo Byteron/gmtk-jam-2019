@@ -1,0 +1,89 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "FiniteStateMachine",
+"language": "GDScript",
+"path": "res://addons/finite_state_machine/source/FiniteStateMachine.gd"
+}, {
+"base": "Node",
+"class": "MusicBooth",
+"language": "GDScript",
+"path": "res://addons/audio_booth/source/music/MusicBooth.gd"
+}, {
+"base": "Node",
+"class": "Song",
+"language": "GDScript",
+"path": "res://addons/audio_booth/source/music/Song.gd"
+}, {
+"base": "Node",
+"class": "Sound",
+"language": "GDScript",
+"path": "res://addons/audio_booth/source/sfx/Sound.gd"
+}, {
+"base": "Node",
+"class": "SoundBooth",
+"language": "GDScript",
+"path": "res://addons/audio_booth/source/sfx/SoundBooth.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://addons/finite_state_machine/source/State.gd"
+}, {
+"base": "Node",
+"class": "StingerContainer",
+"language": "GDScript",
+"path": "res://addons/audio_booth/source/music/containers/StingerContainer.gd"
+}, {
+"base": "Node",
+"class": "TrackContainer",
+"language": "GDScript",
+"path": "res://addons/audio_booth/source/music/containers/TrackContainer.gd"
+} ]
+_global_script_class_icons={
+"FiniteStateMachine": "",
+"MusicBooth": "",
+"Song": "",
+"Sound": "",
+"SoundBooth": "",
+"State": "",
+"StingerContainer": "",
+"TrackContainer": ""
+}
+
+[application]
+
+config/name="GMTK JAM 2019"
+run/main_scene="res://source/interface/menu/TitleScreen.tscn"
+
+[debug]
+
+gdscript/warnings/enable=false
+
+[display]
+
+window/size/width=640
+window/size/height=360
+window/size/test_width=1280
+window/size/test_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "audio_booth", "finite_state_machine" )
+
+[rendering]
+
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+quality/2d/use_pixel_snap=true
