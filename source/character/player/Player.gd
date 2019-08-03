@@ -11,8 +11,8 @@ onready var bow = $Bow
 func _ready() -> void:
 	change_state("idle")
 
-func set_corsair(corsair: Node) -> void:
-	bow.set_corsair(corsair)
+func set_crosshair(crosshair: Node) -> void:
+	bow.set_crosshair(crosshair)
 
 func _process(delta: float) -> void:
 	bow.rotate(get_mouse_direction().angle())
