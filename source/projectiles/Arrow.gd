@@ -11,6 +11,7 @@ func _ready() -> void:
 	apply_impulse(Vector2(), ( get_global_mouse_position() - global_position ).normalized() * speed)
 
 func _process(delta: float) -> void:
+
 	if origin.distance_to(global_position) > travel_distance:
 		mode = MODE_KINEMATIC
 
