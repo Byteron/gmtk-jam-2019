@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://source/character/Character.gd" type="Script" id=1]
 [ext_resource path="res://addons/finite_state_machine/source/FiniteStateMachine.gd" type="Script" id=2]
 [ext_resource path="res://addons/finite_state_machine/icons/fsm.png" type="Texture" id=3]
+[ext_resource path="res://source/character/states/Dead.gd" type="Script" id=4]
+[ext_resource path="res://addons/finite_state_machine/icons/state.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 6 )
@@ -14,6 +16,12 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
+}
+
+[node name="Dead" type="Node" parent="FiniteStateMachine"]
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

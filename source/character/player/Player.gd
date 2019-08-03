@@ -30,3 +30,6 @@ func get_input_direction() -> Vector2:
 
 func collect_arrow() -> void:
 	bow.arrows = 1
+
+func _on_death() -> void:
+	change_state("dead")

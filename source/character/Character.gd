@@ -8,10 +8,12 @@ var health := 1 setget _set_health
 
 var motion := Vector2()
 
-onready var fsm := $FiniteStateMachine as FiniteStateMachine
+var dead := false
 
 export var team_number := 1
 export var health_max := 1
+
+onready var fsm := $FiniteStateMachine as FiniteStateMachine
 
 func _ready() -> void:
 	fsm.host = self
@@ -37,5 +39,6 @@ func _set_health(new_health: int) -> void:
 	if health == 0:
 		emit_signal("died")
 
-func _on_death() -> void:
-	queue_free()
+func _on_death() -> void:#
+	dead = true
+	change_state("dead")

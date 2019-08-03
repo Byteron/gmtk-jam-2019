@@ -65,7 +65,7 @@ func _shoot() -> void:
 	arrow.direction = get_shoot_direction()
 	arrow.force = force
 
-	get_tree().root.add_child(arrow)
+	get_tree().current_scene.add_child(arrow)
 
 	arrows -= 1
 	force = 1
