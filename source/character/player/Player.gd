@@ -1,6 +1,8 @@
 extends Character
 class_name Player
 
+var arrows := 1
+
 onready var anim_upper := $Upper/AnimationPlayer as AnimationPlayer
 onready var anim_lower := $Lower/AnimationPlayer as AnimationPlayer
 
@@ -9,7 +11,7 @@ onready var tween := $Tween as Tween
 onready var bow = $Bow
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("shoot"):
+	if event.is_action_pressed("shoot") and arrows > 0:
 		_shoot()
 
 func _ready() -> void:
@@ -37,3 +39,4 @@ func _shoot() -> void:
 	var arrow = Instance.Arrow()
 	arrow.global_position = bow.global_position
 	get_tree().root.add_child(arrow)
+	arrows -= 1

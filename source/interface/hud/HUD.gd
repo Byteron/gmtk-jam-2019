@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 class_name HUD
 
 onready var crosshair = $Crosshair as Sprite
