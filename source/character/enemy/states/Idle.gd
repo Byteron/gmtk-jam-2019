@@ -1,7 +1,6 @@
 extends State
 
 func enter(host: Enemy) -> void:
-	print(host.name, ": idlee")
 	pass
 
 func input(host: Enemy, event: InputEvent) -> void:

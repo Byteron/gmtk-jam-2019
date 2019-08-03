@@ -3,7 +3,7 @@ extends State
 var speed := 100
 
 func enter(host: Enemy) -> void:
-	print(host.name, ": waaaalk")
+	pass
 
 func input(host: Enemy, event: InputEvent) -> void:
 	pass

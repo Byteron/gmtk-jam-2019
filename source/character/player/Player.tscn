@@ -21,6 +21,7 @@ script = ExtResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Upper" index="0"]
 
 [node name="Sprite" type="Sprite" parent="Upper" index="1"]
+offset = Vector2( 0, -24 )
 
 [node name="Lower" type="Node2D" parent="." index="2"]
 
@@ -28,6 +29,7 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Lower" index="1"]
 texture = ExtResource( 3 )
+offset = Vector2( 0, -24 )
 
 [node name="Bow" parent="." index="3" instance=ExtResource( 4 )]
 
@@ -51,3 +53,6 @@ __meta__ = {
 
 [node name="Dead" parent="FiniteStateMachine" index="3"]
 script = ExtResource( 9 )
+
+[node name="CollisionShape2D" parent="." index="5"]
+position = Vector2( 0, -6 )

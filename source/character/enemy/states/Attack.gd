@@ -11,7 +11,6 @@ var attacked := false
 export var speed = 400
 
 func enter(host: Enemy) -> void:
-	print(host.name, ": attaaack")
 
 	direction = host.get_direction_to_player()
 
