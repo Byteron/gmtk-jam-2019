@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://source/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://graphics/terrain/terrain.png" type="Texture" id=2]
 [ext_resource path="res://source/game/Terrain.gd" type="Script" id=3]
 [ext_resource path="res://source/character/player/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://source/character/enemy/Enemy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://source/interface/hud/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://source/interface/hud/HUD.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -68,18 +67,6 @@ drag_margin_v_enabled = false
 
 [node name="Enemies" type="YSort" parent="."]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource( 5 )]
-position = Vector2( 162.45, 191.901 )
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource( 5 )]
-position = Vector2( 489.251, 130.15 )
-
-[node name="Enemy3" parent="Enemies" instance=ExtResource( 5 )]
-position = Vector2( 622.252, 276.451 )
-
-[node name="Enemy4" parent="Enemies" instance=ExtResource( 5 )]
-position = Vector2( 370, 410 )
-
 [node name="HUD" parent="." groups=[
 "HUD",
-] instance=ExtResource( 6 )]
+] instance=ExtResource( 5 )]

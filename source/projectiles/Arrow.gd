@@ -1,10 +1,11 @@
 extends RigidBody2D
 class_name Arrow
 
-var base_speed := 800
+var base_speed := 500
 var travel_distance := 0
 
 var force := 0
+var draw_time := 0.0
 var direction := Vector2()
 
 var damage := 0
@@ -19,7 +20,7 @@ func _ready() -> void:
 	rotation = direction.angle()
 	damage = force + 1
 	_calculate_travel_distance()
-	apply_impulse(Vector2(), ( direction * (base_speed + ( 200 * force))))
+	apply_impulse(Vector2(), ( direction * (base_speed + ( 300 * draw_time))))
 
 func _process(delta: float) -> void:
 
@@ -44,7 +45,7 @@ func impact() -> void:
 	tween.start()
 
 func _calculate_travel_distance() -> void:
-	travel_distance = 300 + (100 * force)
+	travel_distance = 100 + (200 * draw_time)
 
 func _on_PickupArea_body_entered(body: PhysicsBody2D) -> void:
 

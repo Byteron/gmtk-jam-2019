@@ -29,8 +29,8 @@ func _process_input(delta: float) -> void:
 		time += delta
 
 		if time > force_time:
-			time = 0.0
 			force += 1
+			time = 0.0
 			emit_signal("force_increased")
 
 	if Input.is_action_just_released("shoot") or force == force_max:
@@ -64,7 +64,7 @@ func _shoot() -> void:
 	arrow.global_position = global_position
 	arrow.direction = get_shoot_direction()
 	arrow.force = force
-
+	arrow.draw_time = force * force_time + time
 	get_tree().current_scene.add_child(arrow)
 
 	arrows -= 1
