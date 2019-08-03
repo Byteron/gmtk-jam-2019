@@ -1,7 +1,7 @@
 extends Character
 class_name Player
 
-var arrows := 1
+var facing := Vector2(1, 0)
 
 onready var anim_upper := $Upper/AnimationPlayer as AnimationPlayer
 onready var anim_lower := $Lower/AnimationPlayer as AnimationPlayer
@@ -10,21 +10,14 @@ onready var tween := $Tween as Tween
 
 onready var bow = $Bow
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("shoot") and arrows > 0:
-		_shoot()
-
 func _ready() -> void:
 	change_state("idle")
 
 func _process(delta: float) -> void:
-	bow.rotate(get_mouse_direction().angle())
+	var input_direction = get_input_direction()
 
-func set_crosshair(crosshair: Node) -> void:
-	bow.set_crosshair(crosshair)
-
-func get_mouse_direction() -> Vector2:
-	return global_position.direction_to(get_global_mouse_position()).normalized()
+	if input_direction:
+		facing = input_direction
 
 func get_input_direction() -> Vector2:
 
@@ -35,8 +28,5 @@ func get_input_direction() -> Vector2:
 
 	return Vector2(int(right) - int(left), int(down) - int(up))
 
-func _shoot() -> void:
-	var arrow = Instance.Arrow()
-	arrow.global_position = bow.global_position
-	get_tree().root.add_child(arrow)
-	arrows -= 1
+func collect_arrow() -> void:
+	bow.arrows = 1

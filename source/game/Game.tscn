@@ -20,7 +20,7 @@ format = 1
 [node name="Player" parent="." groups=[
 "Player",
 ] instance=ExtResource( 3 )]
-position = Vector2( 249.197, 144.814 )
+position = Vector2( 260.03, 161.063 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -28,16 +28,15 @@ drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
 [node name="Enemies" type="YSort" parent="."]
-editor/display_folded = true
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 128.448, 65.7716 )
+position = Vector2( 140.829, 97.4968 )
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 342.013, 41.7843 )
+position = Vector2( 212.017, 82.7949 )
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 410.106, 250.706 )
+position = Vector2( 263.087, 74.2833 )
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 151.662, 275.467 )
+position = Vector2( 326.537, 44.8795 )

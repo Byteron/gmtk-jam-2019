@@ -20,6 +20,15 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	move_and_slide(motion)
 
+func hurt(damage: int) -> void:
+	_set_health(health - damage)
+
+func heal(amount: int) -> void:
+	_set_health(health + amount)
+
+func change_state(state_name: String) -> void:
+	fsm.change_state(state_name)
+
 func _set_health(new_health: int) -> void:
 	health = clamp(new_health, 0, health_max)
 
@@ -28,5 +37,5 @@ func _set_health(new_health: int) -> void:
 	if health == 0:
 		emit_signal("died")
 
-func change_state(state_name: String) -> void:
-	fsm.change_state(state_name)
+func _on_death() -> void:
+	queue_free()

@@ -4,7 +4,9 @@ func enter(host: Player) -> void:
 	host.anim_lower.play("idle")
 
 func input(host: Player, event: InputEvent) -> void:
-	pass
+
+	if event.is_action_pressed("dash"):
+		host.change_state("dash")
 
 func update(host: Player, delta: float) -> void:
 

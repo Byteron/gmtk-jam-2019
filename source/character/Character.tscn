@@ -5,7 +5,7 @@
 [ext_resource path="res://addons/finite_state_machine/icons/fsm.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5, 3 )
+extents = Vector2( 16, 6 )
 
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -18,3 +18,4 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+[connection signal="died" from="." to="." method="_on_death"]

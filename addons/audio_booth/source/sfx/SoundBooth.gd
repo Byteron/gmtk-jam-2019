@@ -6,7 +6,6 @@ onready var sfx := {}
 func _ready() -> void:
 
 	for child in _get_children_recursive(self, []):
-		print(child.name)
 		sfx[child.name] = child
 
 func play_sfx(sfx_name: String) -> void:
