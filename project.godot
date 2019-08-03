@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Arrow",
+"language": "GDScript",
+"path": "res://source/projectiles/Arrow.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Character",
 "language": "GDScript",
@@ -70,6 +75,7 @@ _global_script_classes=[ {
 "path": "res://addons/audio_booth/source/music/containers/TrackContainer.gd"
 } ]
 _global_script_class_icons={
+"Arrow": "",
 "Character": "",
 "FiniteStateMachine": "",
 "HUD": "",
@@ -94,6 +100,7 @@ run/main_scene="res://source/interface/menu/TitleScreen.tscn"
 MusicBooth="*res://source/global/MusicBooth.tscn"
 SoundBooth="*res://source/global/SoundBooth.tscn"
 Scene="*res://addons/scene_manager/source/Scene.tscn"
+Instance="*res://source/global/Instance.gd"
 
 [debug]
 
@@ -134,6 +141,22 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+
+[input]
+
+shoot={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Terrain"
+2d_physics/layer_3="Arrow"
+2d_physics/layer_4="Enemies"
 
 [rendering]
 
