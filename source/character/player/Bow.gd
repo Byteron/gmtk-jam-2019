@@ -12,7 +12,7 @@ var force = 1
 var prev_direction := Vector2()
 
 export var force_max := 4
-export var force_time := 0.5
+export var force_time := 0.35
 
 onready var crosshair := $CrosshairHook as RemoteTransform2D
 
@@ -25,16 +25,22 @@ func _process_input(delta: float) -> void:
 	if not arrows:
 		return
 
+	if Input.is_action_just_released("shoot"):
+		_shoot()
+
 	if Input.is_action_pressed("shoot"):
+
+		if force == force_max:
+			return
+
 		time += delta
 
 		if time > force_time:
 			force += 1
 			time = 0.0
 			emit_signal("force_increased")
+			get_tree().call_group("GameCam", "shake", 4, 0.1, 1)
 
-	if Input.is_action_just_released("shoot") or force == force_max:
-		_shoot()
 
 func _process_roation() -> void:
 

@@ -1,7 +1,7 @@
 extends RigidBody2D
 class_name Arrow
 
-var base_speed := 500
+var base_speed := 800
 var travel_distance := 0
 
 var force := 0
