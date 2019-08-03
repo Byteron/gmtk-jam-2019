@@ -1,6 +1,7 @@
 extends State
 
 var speed = 250
+var aim_speed = 120
 
 func enter(host: Player) -> void:
 	host.anim_lower.play("walk")
@@ -14,7 +15,10 @@ func update(host: Player, delta: float) -> void:
 
 	var input_direction = host.get_input_direction()
 
-	host.motion = speed * input_direction.normalized()
+	if Input.is_action_pressed("shoot"):
+		host.motion = aim_speed * input_direction.normalized()
+	else:
+		host.motion = speed * input_direction.normalized()
 
 	if not input_direction:
 		host.change_state("idle")

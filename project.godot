@@ -105,6 +105,7 @@ Devices="*res://source/global/Devices.gd"
 
 [debug]
 
+settings/stdout/print_fps=true
 gdscript/warnings/enable=false
 
 [display]
