@@ -1,4 +1,3 @@
 extends Node2D
 
-func _ready() -> void:
-	print("Game")
+onready var hud := $HUD as HUD

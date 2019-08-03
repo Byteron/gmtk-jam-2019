@@ -11,8 +11,11 @@ onready var bow = $Bow
 func _ready() -> void:
 	change_state("idle")
 
+func set_corsair(corsair: Node) -> void:
+	bow.set_corsair(corsair)
+
 func _process(delta: float) -> void:
-	bow.rotate_corsair(get_mouse_direction().angle())
+	bow.rotate(get_mouse_direction().angle())
 
 func get_mouse_direction() -> Vector2:
 	return global_position.direction_to(get_global_mouse_position()).normalized()
