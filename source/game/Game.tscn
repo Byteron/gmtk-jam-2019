@@ -30,28 +30,13 @@ drag_margin_v_enabled = false
 [node name="Enemies" type="YSort" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 140.829, 97.4968 )
+position = Vector2( 99.6637, 57.8017 )
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 212.017, 82.7949 )
+position = Vector2( 62.7929, 275.39 )
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 263.087, 74.2833 )
+position = Vector2( 458.622, 131.621 )
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 326.537, 44.8795 )
-
-[node name="Enemy5" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 485.936, 144.698 )
-
-[node name="Enemy6" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 396.177, 271.598 )
-
-[node name="Enemy7" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 147.019, 413.201 )
-
-[node name="Enemy8" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 5.4165, 302.55 )
-
-[node name="Enemy9" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( -107.556, 163.268 )
+position = Vector2( 475.761, 330.831 )

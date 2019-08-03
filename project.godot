@@ -108,6 +108,7 @@ SoundBooth="*res://source/global/SoundBooth.tscn"
 Scene="*res://addons/scene_manager/source/Scene.tscn"
 Instance="*res://source/global/Instance.gd"
 Devices="*res://source/global/Devices.gd"
+Global="*res://source/global/Global.gd"
 
 [debug]
 

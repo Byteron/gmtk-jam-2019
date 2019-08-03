@@ -11,6 +11,8 @@ onready var tween := $Tween as Tween
 onready var bow = $Bow
 
 func _ready() -> void:
+	Global.Player = self
+
 	change_state("idle")
 
 func _process(delta: float) -> void:
