@@ -1,10 +1,31 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://source/global/Music.gd" type="Script" id=1]
 [ext_resource path="res://addons/audio_booth/graphics/icons/icon.png" type="Texture" id=2]
+[ext_resource path="res://addons/audio_booth/source/music/Song.gd" type="Script" id=3]
+[ext_resource path="res://addons/audio_booth/source/music/containers/TrackContainer.gd" type="Script" id=4]
+[ext_resource path="res://audio/music/music.wav" type="AudioStream" id=5]
 
 [node name="Music" type="Node"]
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
 }
+
+[node name="Music" type="Node" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+tempo = 155.0
+beats = 4
+
+[node name="TrackContainer" type="Node" parent="Music"]
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+
+[node name="Core" type="AudioStreamPlayer" parent="Music/TrackContainer"]
+stream = ExtResource( 5 )
+volume_db = -24.0
