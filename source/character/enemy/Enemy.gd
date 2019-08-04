@@ -7,6 +7,7 @@ var textures := [
 	preload("res://graphics/characters/enemies/enemy_3.png"),
 	preload("res://graphics/characters/enemies/enemy_4.png"),
 	preload("res://graphics/characters/enemies/enemy_5.png"),
+	preload("res://graphics/characters/enemies/enemy_6.png"),
 ]
 
 var current_animation := ""
