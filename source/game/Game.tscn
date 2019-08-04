@@ -71,7 +71,6 @@ current = true
 
 [node name="Spawner" type="YSort" parent="."]
 script = ExtResource( 6 )
-enemies_max = 8
 
 [node name="Timer" type="Timer" parent="Spawner"]
 autostart = true

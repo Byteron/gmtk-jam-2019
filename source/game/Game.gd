@@ -1,16 +1,18 @@
 extends Node2D
 
 var difficulty_table = [
-	{ "score": 0, "max_enemies": 2, "max_health": 1},
-	{ "score": 1000, "max_enemies": 3, "max_health": 1},
-	{ "score": 5000, "max_enemies": 4, "max_health": 1},
-	{ "score": 8000, "max_enemies": 4, "max_health": 2},
-	{ "score": 10000, "max_enemies": 5, "max_health": 2},
-	{ "score": 15000, "max_enemies": 5, "max_health": 3},
-	{ "score": 20000, "max_enemies": 6, "max_health": 3},
-	{ "score": 30000, "max_enemies": 7, "max_health": 3},
-	{ "score": 50000, "max_enemies": 8, "max_health": 4},
-	{ "score": 100000, "max_enemies": 10, "max_health": 5}
+	{ "score": 0, "max_enemies": 1, "max_health": 1},
+	{ "score": 200, "max_enemies": 2, "max_health": 1},
+	{ "score": 500, "max_enemies": 3, "max_health": 2},
+	{ "score": 1000, "max_enemies": 4, "max_health": 2},
+	{ "score": 2000, "max_enemies": 4, "max_health": 2},
+	{ "score": 4000, "max_enemies": 5, "max_health": 2},
+	{ "score": 8000, "max_enemies": 5, "max_health": 3},
+	{ "score": 12000, "max_enemies": 6, "max_health": 3},
+	{ "score": 20000, "max_enemies": 7, "max_health": 3},
+	{ "score": 30000, "max_enemies": 8, "max_health": 4},
+	{ "score": 40000, "max_enemies": 8, "max_health": 5},
+	{ "score": 50000, "max_enemies": 10, "max_health": 5}
 ]
 
 var time = 0.0
@@ -41,8 +43,10 @@ func _update_difficulty() -> void:
 		else:
 			break
 
-func _get_difficulty() -> Dictionary:
-	return {}
+	print(difficulty)
+
+	spawner.max_enemies = difficulty.max_enemies
+	spawner.max_health = difficulty.max_health
 
 func _on_Enemy_died(enemy: Enemy) -> void:
 	kill_score += enemy.health_max * score_per_kill
@@ -55,6 +59,7 @@ func _on_Spawner_enemy_spawned(enemy) -> void:
 func _on_ScoreTimer_timeout() -> void:
 	score += score_per_second * score_timer.wait_time
 	hud.update_score(score)
+	_update_difficulty()
 
 func _on_KillTimer_timeout() -> void:
 	score += kill_score * kill_multiplier

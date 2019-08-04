@@ -19,8 +19,11 @@ onready var sprite := $Sprite as Sprite
 
 onready var walk_state := $FiniteStateMachine/Walk
 
+onready var health_bar := $Healthbar
+
 func _ready() -> void:
 	sprite.texture = textures[randi() % textures.size()]
+	health_bar.initialize(health_max)
 	change_state("idle")
 
 func get_direction_to_player() -> Vector2:
@@ -72,6 +75,10 @@ func _is_player_in_reach(reach: int) -> bool:
 		return false
 
 	return global_position.distance_to(Global.Player.global_position) <= reach
+
+func _set_health(new_health) -> void:
+	._set_health(new_health)
+	health_bar.update_health(new_health)
 
 func _on_HitBox_body_entered(body: PhysicsBody2D) -> void:
 
