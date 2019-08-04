@@ -1,6 +1,8 @@
 extends State
 
 func enter(host: Player) -> void:
+	if not Input.is_action_pressed("shoot"):
+		host.anim_upper.play("idle")
 	host.anim_lower.play("idle")
 
 func input(host: Player, event: InputEvent) -> void:

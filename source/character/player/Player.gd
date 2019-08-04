@@ -1,6 +1,7 @@
 extends Character
 class_name Player
 
+var current_animation := ""
 var facing := Vector2(1, 0)
 
 onready var anim_upper := $Upper/AnimationPlayer as AnimationPlayer
@@ -20,6 +21,13 @@ func _process(delta: float) -> void:
 
 	if input_direction:
 		facing = input_direction
+
+func play_upper(anim_name: String) -> void:
+
+	if anim_upper.current_animation == anim_name:
+		return
+
+	anim_upper.play(anim_name)
 
 func get_input_direction() -> Vector2:
 

@@ -4,6 +4,8 @@ var speed = 250
 var aim_speed = 120
 
 func enter(host: Player) -> void:
+	if not Input.is_action_pressed("shoot"):
+		host.anim_upper.play("walk")
 	host.anim_lower.play("walk")
 
 func input(host: Player, event: InputEvent) -> void:
@@ -17,8 +19,10 @@ func update(host: Player, delta: float) -> void:
 
 	if Input.is_action_pressed("shoot"):
 		host.motion = aim_speed * input_direction.normalized()
+		host.anim_lower.playback_speed = 0.6
 	else:
 		host.motion = speed * input_direction.normalized()
+		host.anim_lower.playback_speed = 1
 
 	if not input_direction:
 		host.change_state("idle")

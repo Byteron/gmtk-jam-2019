@@ -27,8 +27,11 @@ func _process_input(delta: float) -> void:
 
 	if Input.is_action_just_released("shoot"):
 		_shoot()
+		var player = get_parent()
+		player.play_upper(player.anim_lower.current_animation)
 
 	if Input.is_action_pressed("shoot"):
+		get_parent().play_upper("aim")
 
 		if force == force_max:
 			return

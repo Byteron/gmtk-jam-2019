@@ -2,7 +2,7 @@ extends YSort
 
 signal enemy_spawned(enemy)
 
-var enemies_max := 4
+export var enemies_max := 4
 
 onready var spawn_points = $SpawnPoints.get_children()
 onready var enemies := $Enemies
