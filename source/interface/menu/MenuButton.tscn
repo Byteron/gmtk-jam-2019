@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://source/interface/menu/MenuButton.gd" type="Script" id=1]
+[ext_resource path="res://graphics/interface/button.png" type="Texture" id=1]
+[ext_resource path="res://source/interface/menu/MenuButton.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
 
 [node name="MenuButton" type="Button"]
 margin_right = 12.0
 margin_bottom = 20.0
-script = ExtResource( 1 )
+rect_min_size = Vector2( 80, 25 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+script = ExtResource( 2 )
