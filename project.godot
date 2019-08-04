@@ -116,13 +116,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GMTK JAM 2019"
+config/name="One Arrow Colosseum"
 run/main_scene="res://source/interface/menu/TitleScreen.tscn"
 
 [autoload]
 
-MusicBooth="*res://source/global/MusicBooth.tscn"
-SoundBooth="*res://source/global/SoundBooth.tscn"
+Music="*res://source/global/Music.tscn"
+Sounds="*res://source/global/Sounds.tscn"
 Scene="*res://addons/scene_manager/source/Scene.tscn"
 Instance="*res://source/global/Instance.gd"
 Devices="*res://source/global/Devices.gd"

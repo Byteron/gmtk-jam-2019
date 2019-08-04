@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enemyAttack.wav-4ee6b9dcac22d36f5dc196f0788b2f50.sample"
+
+[deps]
+
+source_file="res://audio/sfx/enemyAttack.wav"
+dest_files=[ "res://.import/enemyAttack.wav-4ee6b9dcac22d36f5dc196f0788b2f50.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

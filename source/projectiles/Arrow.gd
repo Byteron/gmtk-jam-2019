@@ -24,16 +24,20 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 
-	if origin.distance_to(global_position) > travel_distance:
+	if origin.distance_to(global_position) > travel_distance and mode == MODE_RIGID:
+		Sounds.play_sfx("ArrowHitGround")
 		impact()
 
 func hit() -> void:
 	force -= 1
 	damage -= 1
 
+
 	if force == 0:
+		Sounds.play_sfx("ArrowHit")
 		impact()
 	else:
+		Sounds.play_sfx("ArrowHit")
 		_calculate_travel_distance()
 
 func impact() -> void:
@@ -56,4 +60,5 @@ func _on_PickupArea_body_entered(body: PhysicsBody2D) -> void:
 func _on_Arrow_body_entered(body: Node) -> void:
 
 	if body is TileMap and mode == MODE_RIGID:
+		Sounds.play_sfx("ArrowHitWall")
 		impact()

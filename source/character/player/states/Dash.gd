@@ -6,7 +6,7 @@ var friction := 1500
 var direction := Vector2()
 
 func enter(host: Player) -> void:
-	# host.anim_lower.play("dash")
+	host.anim_lower.play("dash" + host.get_fwd_bw())
 	direction = host.facing.normalized()
 	host.motion = direction * force
 

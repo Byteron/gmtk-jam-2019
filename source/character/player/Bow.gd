@@ -11,7 +11,7 @@ var force = 1
 
 var prev_direction := Vector2()
 
-export var force_max := 4
+export var force_max := 5
 export var force_time := 0.35
 
 onready var crosshair := $CrosshairHook as RemoteTransform2D
@@ -40,6 +40,7 @@ func _process_input(delta: float) -> void:
 
 		if time > force_time:
 			force += 1
+			Sounds.play_sfx("BowCharge%d" % force)
 			time = 0.0
 			emit_signal("force_increased")
 			get_tree().call_group("GameCam", "shake", 4, 0.1, 1)
@@ -75,6 +76,7 @@ func _shoot() -> void:
 	arrow.force = force
 	arrow.draw_time = force * force_time + time
 	get_tree().current_scene.add_child(arrow)
+	Sounds.play_sfx("ArrowShoot")
 
 	arrows -= 1
 	force = 1

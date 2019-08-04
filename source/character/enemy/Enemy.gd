@@ -21,7 +21,10 @@ onready var walk_state := $FiniteStateMachine/Walk
 
 onready var health_bar := $Healthbar
 
+onready var spawn_grace_timer := $SpawnGraceTimer as Timer
+
 func _ready() -> void:
+	modulate.a = 0.5
 	sprite.texture = textures[randi() % textures.size()]
 	health_bar.initialize(health_max)
 	change_state("idle")
@@ -82,10 +85,13 @@ func _set_health(new_health) -> void:
 
 func _on_HitBox_body_entered(body: PhysicsBody2D) -> void:
 
-	if body is Arrow:
+	if body is Arrow and spawn_grace_timer.is_stopped():
 		body.hit()
 		hurt(body.damage)
 		spawn_hit(body.global_position)
 
-	if body is Player and not dead:
+	if body is Player and not dead and spawn_grace_timer.is_stopped():
 		body.hurt(1)
+
+func _on_SpawnGraceTimer_timeout() -> void:
+	modulate.a = 1.0

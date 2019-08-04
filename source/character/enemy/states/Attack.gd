@@ -39,3 +39,4 @@ func _attack(host: Enemy) -> void:
 		host.tween.interpolate_property(host, "motion", host.motion, Vector2(), 1.2, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		host.tween.start()
 		attacked = true
+		Sounds.play_sfx("EnemyAttack")

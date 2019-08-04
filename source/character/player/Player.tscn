@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://source/character/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/character/player/Player.gd" type="Script" id=2]
@@ -12,88 +12,24 @@
 [ext_resource path="res://source/character/player/states/Dead.gd" type="Script" id=10]
 
 [sub_resource type="Animation" id=1]
-resource_name = "idle"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:vframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 2 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 6 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "walk"
+resource_name = "dash_bw"
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:vframes")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 2 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 6 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 6, 7, 8, 9, 10, 11 ]
+"values": [ 24, 25, 26, 27, 28, 29 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "aim"
+[sub_resource type="Animation" id=2]
+resource_name = "dash_fwd"
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -109,8 +45,7 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15, 16, 17 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "idle"
+[sub_resource type="Animation" id=3]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -120,14 +55,81 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "walk_bw"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 18, 19, 20, 21, 22, 23 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep"
+}, {
+"args": [  ],
+"method": "play_footstep"
+} ]
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "walk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10, 11 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_footstep"
+}, {
+"args": [  ],
+"method": "play_footstep"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "aim_idle"
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -143,7 +145,88 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9, 10, 11 ]
 }
 
-[node name="Player" index="0" instance=ExtResource( 1 )]
+[sub_resource type="Animation" id=7]
+resource_name = "aim_walk_bw"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 30, 31, 32, 33, 34, 35 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 18, 19, 20, 21, 22, 23 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 27, 28, 29 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15, 16, 17 ]
+}
+
+[node name="Player" instance=ExtResource( 1 )]
 collision_mask = 18
 script = ExtResource( 2 )
 
@@ -152,29 +235,34 @@ script = ExtResource( 2 )
 [node name="Lower" type="Node2D" parent="." index="1"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Lower" index="0"]
-anims/idle = SubResource( 1 )
-anims/walk = SubResource( 2 )
+anims/dash_bw = SubResource( 1 )
+anims/dash_fwd = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/walk_bw = SubResource( 4 )
+anims/walk_fwd = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Lower" index="1"]
 texture = ExtResource( 3 )
 offset = Vector2( 0, -24 )
-vframes = 2
+vframes = 5
 hframes = 6
-frame = 10
+frame = 11
 
 [node name="Upper" type="Node2D" parent="." index="2"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Upper" index="0"]
-anims/aim = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/walk = SubResource( 5 )
+anims/aim_idle = SubResource( 6 )
+anims/aim_walk_bw = SubResource( 7 )
+anims/aim_walk_fwd = SubResource( 8 )
+anims/idle = SubResource( 9 )
+anims/walk_bw = SubResource( 10 )
+anims/walk_fwd = SubResource( 11 )
 
 [node name="Sprite" type="Sprite" parent="Upper" index="1"]
 texture = ExtResource( 4 )
 offset = Vector2( 0, -24 )
-vframes = 3
+vframes = 6
 hframes = 6
-frame = 12
 
 [node name="Bow" parent="." index="3" instance=ExtResource( 5 )]
 position = Vector2( 0, -29 )
