@@ -43,8 +43,6 @@ func _update_difficulty() -> void:
 		else:
 			break
 
-	print(difficulty)
-
 	spawner.max_enemies = difficulty.max_enemies
 	spawner.max_health = difficulty.max_health
 

@@ -52,6 +52,24 @@ position = Vector2( 874.778, 517.602 )
 [node name="4" type="Position2D" parent="Spawner/SpawnPoints"]
 position = Vector2( 93.5398, 526.542 )
 
+[node name="5" type="Position2D" parent="Spawner/SpawnPoints"]
+position = Vector2( 89.2529, 361.068 )
+
+[node name="6" type="Position2D" parent="Spawner/SpawnPoints"]
+position = Vector2( 884.898, 347.35 )
+
+[node name="7" type="Position2D" parent="Spawner/SpawnPoints"]
+position = Vector2( 479.359, 174.161 )
+
+[node name="8" type="Position2D" parent="Spawner/SpawnPoints"]
+position = Vector2( 493.077, 539.403 )
+
+[node name="9" type="Position2D" parent="Spawner/SpawnPoints"]
+position = Vector2( 218.717, 366.213 )
+
+[node name="10" type="Position2D" parent="Spawner/SpawnPoints"]
+position = Vector2( 756.291, 349.923 )
+
 [node name="Enemies" type="YSort" parent="Spawner"]
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
