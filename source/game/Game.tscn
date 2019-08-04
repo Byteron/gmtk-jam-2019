@@ -1,13 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://source/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://graphics/terrain/terrain.png" type="Texture" id=2]
 [ext_resource path="res://source/game/Terrain.gd" type="Script" id=3]
 [ext_resource path="res://source/character/player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://source/camera/GameCam.tscn" type="PackedScene" id=5]
-[ext_resource path="res://source/game/Enemies.gd" type="Script" id=6]
-[ext_resource path="res://source/character/enemy/Enemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://source/interface/hud/HUD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://source/game/Spawner.gd" type="Script" id=6]
+[ext_resource path="res://source/interface/hud/HUD.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -43,8 +42,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="Game" type="YSort"]
 script = ExtResource( 1 )
 
-[node name="EnemyTimer" type="Timer" parent="."]
-
 [node name="Terrain" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 cell_size = Vector2( 32, 32 )
@@ -64,19 +61,32 @@ position = Vector2( 260.03, 161.063 )
 [node name="GameCam" parent="Player" instance=ExtResource( 5 )]
 current = true
 
-[node name="Enemies" type="YSort" parent="."]
+[node name="Spawner" type="YSort" parent="."]
 script = ExtResource( 6 )
 
-[node name="Enemy" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 119.7, 156.751 )
+[node name="Timer" type="Timer" parent="Spawner"]
+autostart = true
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 501.602, 126.35 )
+[node name="SpawnPoints" type="Node2D" parent="Spawner"]
 
-[node name="Enemy3" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 582.352, 341.051 )
+[node name="1" type="Position2D" parent="Spawner/SpawnPoints"]
+position = Vector2( 57.5601, 80.4102 )
 
-[node name="Enemy4" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 215.651, 434.152 )
+[node name="2" type="Position2D" parent="Spawner/SpawnPoints"]
+position = Vector2( 659.138, 78.0636 )
 
-[node name="HUD" parent="." instance=ExtResource( 8 )]
+[node name="3" type="Position2D" parent="Spawner/SpawnPoints"]
+position = Vector2( 654.778, 432.339 )
+
+[node name="4" type="Position2D" parent="Spawner/SpawnPoints"]
+position = Vector2( 70.3818, 438.121 )
+
+[node name="Enemies" type="YSort" parent="Spawner"]
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+margin_left = 57.9501
+margin_top = 62.7001
+margin_right = 57.9501
+margin_bottom = 62.7001
+[connection signal="enemy_spawned" from="Spawner" to="." method="_on_Spawner_enemy_spawned"]
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]

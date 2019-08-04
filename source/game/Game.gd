@@ -5,13 +5,7 @@ var score := 0
 
 onready var hud := $HUD as HUD
 
-onready var enemies := $Enemies as YSort
-onready var enemy_timer := $EnemyTimer as Timer
-
-func _ready() -> void:
-
-	for enemy in enemies.get_children():
-		enemy.connect("died", self, "_on_Enemy_died", [ enemy ])
+onready var spawner := $Spawner as YSort
 
 func _process(delta: float) -> void:
 	time += delta
@@ -19,3 +13,6 @@ func _process(delta: float) -> void:
 func _on_Enemy_died(enemy: Enemy) -> void:
 	score += enemy.health_max
 	hud.update_score(score)
+
+func _on_Spawner_enemy_spawned(enemy) -> void:
+	enemy.connect("died", self, "_on_Enemy_died", [ enemy ])
