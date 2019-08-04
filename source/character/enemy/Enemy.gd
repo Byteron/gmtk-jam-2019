@@ -85,6 +85,7 @@ func _on_HitBox_body_entered(body: PhysicsBody2D) -> void:
 	if body is Arrow:
 		body.hit()
 		hurt(body.damage)
+		spawn_hit(body.global_position)
 
 	if body is Player and not dead:
 		body.hurt(1)

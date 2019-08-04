@@ -13,6 +13,8 @@ var dead := false
 export var team_number := 1
 export var health_max := 1
 
+onready var particle_spawner := $ParticleSpawner as ParticleSpawner
+
 onready var fsm := $FiniteStateMachine as FiniteStateMachine
 
 func _ready() -> void:
@@ -27,6 +29,9 @@ func hurt(damage: int) -> void:
 
 func heal(amount: int) -> void:
 	_set_health(health + amount)
+
+func spawn_hit(origin: Vector2) -> void:
+	particle_spawner.spawn_hit(origin, global_position)
 
 func change_state(state_name: String) -> void:
 	fsm.change_state(state_name)
