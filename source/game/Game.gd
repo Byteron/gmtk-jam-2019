@@ -66,3 +66,8 @@ func _on_KillTimer_timeout() -> void:
 	kill_score = 0
 	kill_multiplier = kill_streak_multiplier
 	hud.update_score(score)
+
+
+func _on_Player_died() -> void:
+	Global.last_score = score
+	Scene.change("GameOver")

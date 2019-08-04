@@ -98,5 +98,6 @@ margin_right = 57.9501
 margin_bottom = 62.7001
 [connection signal="timeout" from="KillTimer" to="." method="_on_KillTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="died" from="Player" to="." method="_on_Player_died"]
 [connection signal="enemy_spawned" from="Spawner" to="." method="_on_Spawner_enemy_spawned"]
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
