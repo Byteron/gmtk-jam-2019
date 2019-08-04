@@ -3,7 +3,10 @@ class_name Enemy
 
 var textures := [
 	preload("res://graphics/characters/enemies/enemy_1.png"),
-	preload("res://graphics/characters/enemies/enemy_2.png")
+	preload("res://graphics/characters/enemies/enemy_2.png"),
+	preload("res://graphics/characters/enemies/enemy_3.png"),
+	preload("res://graphics/characters/enemies/enemy_4.png"),
+	preload("res://graphics/characters/enemies/enemy_5.png"),
 ]
 
 var current_animation := ""
