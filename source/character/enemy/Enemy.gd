@@ -1,13 +1,43 @@
 extends Character
 class_name Enemy
 
-var textures := [
-	preload("res://graphics/characters/enemies/enemy_1.png"),
-	preload("res://graphics/characters/enemies/enemy_2.png"),
-	preload("res://graphics/characters/enemies/enemy_3.png"),
-	preload("res://graphics/characters/enemies/enemy_4.png"),
-	preload("res://graphics/characters/enemies/enemy_5.png"),
-	preload("res://graphics/characters/enemies/enemy_6.png"),
+var presets := [
+	{
+		"health": 1,
+		"speed": -20,
+		"attack_speed": 0,
+		"texture": preload("res://graphics/characters/enemies/enemy_1.png")
+	},
+	{
+		"health": 1,
+		"speed": -50,
+		"attack_speed": -50,
+		"texture": preload("res://graphics/characters/enemies/enemy_2.png")
+	},
+	{
+		"health": 0,
+		"speed": 0,
+		"attack_speed": -20,
+		"texture": preload("res://graphics/characters/enemies/enemy_3.png")
+	},
+	{
+		"health": 0,
+		"speed": 10,
+		"attack_speed": 10,
+		"texture": preload("res://graphics/characters/enemies/enemy_4.png")
+	},
+	{
+		"health": 0,
+		"speed": 20,
+		"attack_speed": 20,
+		"texture": preload("res://graphics/characters/enemies/enemy_5.png")
+	},
+	{
+		"health": 2,
+		"speed": -30,
+		"attack_speed": -100,
+		"texture": preload("res://graphics/characters/enemies/enemy_6.png")
+	},
 ]
 
 var current_animation := ""
@@ -22,16 +52,30 @@ onready var tween := $Tween as Tween
 onready var sprite := $Sprite as Sprite
 
 onready var walk_state := $FiniteStateMachine/Walk
+onready var attack_state := $FiniteStateMachine/Attack
 
 onready var health_bar := $Healthbar
 
 onready var spawn_grace_timer := $SpawnGraceTimer as Timer
 
 func _ready() -> void:
-	modulate.a = 0.5
-	sprite.texture = textures[randi() % textures.size()]
+	var preset = presets[randi() % presets.size()]
+
+	health_max += preset.health
+	walk_state.speed += preset.speed
+	attack_state.speed += preset.attack_speed
+
+	sprite.texture = preset.texture
+
 	health_bar.initialize(health_max)
+	restore()
+
+	modulate.a = 0.5
+
 	change_state("idle")
+
+func restore() -> void:
+	health = health_max
 
 func get_direction_to_player() -> Vector2:
 
