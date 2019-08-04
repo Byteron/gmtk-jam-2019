@@ -38,7 +38,7 @@ func hit() -> void:
 
 func impact() -> void:
 	set_deferred("mode", MODE_KINEMATIC)
-	coll.disabled = true
+	coll.set_deferred("disabled", true)
 	applied_force = Vector2(0, 0)
 	applied_torque = 0
 	tween.interpolate_property(sprite, "global_position", global_position, global_position + direction * 5, 0.1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
