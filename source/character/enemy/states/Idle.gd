@@ -1,7 +1,7 @@
 extends State
 
 func enter(host: Enemy) -> void:
-	pass
+	host.play_anim("idle")
 
 func input(host: Enemy, event: InputEvent) -> void:
 	pass

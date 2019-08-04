@@ -11,10 +11,8 @@ var attacked := false
 export var speed = 400
 
 func enter(host: Enemy) -> void:
-
 	direction = host.get_direction_to_player()
-
-
+	host.play_anim("idle")
 
 func input(host: Enemy, event: InputEvent) -> void:
 	pass
