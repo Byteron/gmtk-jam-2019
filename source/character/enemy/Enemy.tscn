@@ -1,13 +1,92 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://source/character/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/character/enemy/Enemy.gd" type="Script" id=2]
-[ext_resource path="res://graphics/characters/enemies/enemy_1.png" type="Texture" id=3]
-[ext_resource path="res://source/character/enemy/states/Idle.gd" type="Script" id=4]
-[ext_resource path="res://addons/finite_state_machine/icons/state.png" type="Texture" id=5]
-[ext_resource path="res://source/character/enemy/states/Walk.gd" type="Script" id=6]
-[ext_resource path="res://source/character/enemy/states/Attack.gd" type="Script" id=7]
-[ext_resource path="res://source/character/enemy/Healthbar.gd" type="Script" id=8]
+[ext_resource path="res://graphics/characters/enemies/enemy_death.png" type="Texture" id=3]
+[ext_resource path="res://graphics/characters/enemies/enemy_1.png" type="Texture" id=4]
+[ext_resource path="res://source/character/enemy/states/Idle.gd" type="Script" id=5]
+[ext_resource path="res://addons/finite_state_machine/icons/state.png" type="Texture" id=6]
+[ext_resource path="res://source/character/enemy/states/Walk.gd" type="Script" id=7]
+[ext_resource path="res://source/character/enemy/states/Attack.gd" type="Script" id=8]
+[ext_resource path="res://source/character/enemy/states/Dead.gd" type="Script" id=9]
+[ext_resource path="res://source/character/enemy/Healthbar.gd" type="Script" id=10]
+
+[sub_resource type="Animation" id=10]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Healthbar:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle_down"
@@ -150,8 +229,11 @@ extents = Vector2( 10, 13 )
 collision_layer = 8
 collision_mask = 10
 script = ExtResource( 2 )
+vision = 500
+attack_range = 80
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+anims/die = SubResource( 10 )
 anims/idle_down = SubResource( 1 )
 anims/idle_left = SubResource( 2 )
 anims/idle_right = SubResource( 3 )
@@ -164,29 +246,31 @@ anims/walk_up = SubResource( 8 )
 [node name="Tween" type="Tween" parent="." index="1"]
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 0, -16 )
 vframes = 4
 hframes = 6
-frame = 18
 
 [node name="Idle" type="Node" parent="FiniteStateMachine" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 __meta__ = {
-"_editor_icon": ExtResource( 5 )
+"_editor_icon": ExtResource( 6 )
 }
 
 [node name="Walk" type="Node" parent="FiniteStateMachine" index="1"]
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 __meta__ = {
-"_editor_icon": ExtResource( 5 )
+"_editor_icon": ExtResource( 6 )
 }
 
 [node name="Attack" type="Node" parent="FiniteStateMachine" index="2"]
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 __meta__ = {
-"_editor_icon": ExtResource( 5 )
+"_editor_icon": ExtResource( 6 )
 }
+
+[node name="Dead" parent="FiniteStateMachine" index="3"]
+script = ExtResource( 9 )
 
 [node name="HitBox" type="Area2D" parent="." index="4"]
 position = Vector2( 0, -13 )
@@ -202,7 +286,7 @@ position = Vector2( 0, -5 )
 [node name="Healthbar" type="Control" parent="." index="6"]
 margin_top = -41.0
 margin_bottom = -41.0
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Healthbar" index="0"]
 anchor_left = 0.5
