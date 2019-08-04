@@ -7,6 +7,10 @@ export var attack_range := 100
 onready var anim := $AnimationPlayer as AnimationPlayer
 onready var tween := $Tween as Tween
 
+onready var sprite := $Sprite as Sprite
+
+onready var walk_state := $FiniteStateMachine/Walk
+
 func _ready() -> void:
 	change_state("idle")
 
