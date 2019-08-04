@@ -3,7 +3,7 @@ extends State
 var speed := 100
 
 func enter(host: Enemy) -> void:
-	pass
+	host.play_anim("walk")
 
 func input(host: Enemy, event: InputEvent) -> void:
 	pass
@@ -11,6 +11,8 @@ func input(host: Enemy, event: InputEvent) -> void:
 func update(host: Enemy, delta: float) -> void:
 
 	var direction = host.get_direction_to_player()
+
+	host.update_animation(direction)
 
 	host.motion = direction * speed
 
