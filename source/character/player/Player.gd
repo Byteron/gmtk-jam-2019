@@ -3,11 +3,11 @@ class_name Player
 
 const body_down_tex := preload("res://graphics/characters/player/mc-body-forward.png")
 const body_side_tex := preload("res://graphics/characters/player/mc-body-side.png")
-const body_up_tex := preload("res://graphics/characters/player/mc-body-forward.png")
+const body_up_tex := preload("res://graphics/characters/player/mc-body-back.png")
 
 const legs_down_tex := preload("res://graphics/characters/player/mc-legs-forward.png")
 const legs_side_tex := preload("res://graphics/characters/player/mc-legs-side.png")
-const legs_up_tex := preload("res://graphics/characters/player/mc-legs-forward.png")
+const legs_up_tex := preload("res://graphics/characters/player/mc-legs-back.png")
 
 var current_animation := ""
 var facing := Vector2(1, 0)
